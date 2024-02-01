@@ -30,7 +30,7 @@ class HomePage extends React.Component {
             marginTop: '20px',
           }}>
             <img 
-              src="/voucher.jpg" 
+              src="/Voucher.jpg" 
               alt="Gift Voucher" 
               style={{ maxWidth: '100%', height: 'auto' }} />
             <p>Enjoy your gift!</p>
