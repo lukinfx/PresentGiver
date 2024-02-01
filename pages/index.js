@@ -1,23 +1,44 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+// pages/index.js
+import React from 'react';
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showVoucher: false };
+    this.toggleVoucher = this.toggleVoucher.bind(this);
+  }
 
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
+  toggleVoucher() {
+    this.setState({ showVoucher: !this.state.showVoucher });
+  }
 
-      <Footer />
-    </div>
-  )
+  render() {
+    return (
+      <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', paddingTop: '50px' }}>
+        <button 
+          style={{ fontSize: '16px', padding: '10px 20px', cursor: 'pointer' }}
+          onClick={this.toggleVoucher}>
+          {this.state.showVoucher ? 'Hide Your Gift' : 'Reveal Your Gift'}
+        </button>
+
+        {this.state.showVoucher && (
+          <div style={{
+            border: '1px solid #ddd',
+            padding: '20px',
+            backgroundColor: '#fff',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+            marginTop: '20px',
+          }}>
+            <img 
+              src="/voucher.jpg" 
+              alt="Gift Voucher" 
+              style={{ maxWidth: '100%', height: 'auto' }} />
+            <p>Enjoy your gift!</p>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
+
+export default HomePage;
